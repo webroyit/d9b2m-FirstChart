@@ -16,13 +16,23 @@ output_file("index.html")
 
 # add plot
 p = figure(
-    title = "First Graph",
-    x_axis_label = "X Axis",
-    y_axis_label = "Y Axis"
+    y_range = tree,
+    plot_width = 800,           # width of the graph
+    plot_height = 600,          # height of the graph
+    title = "Trees Height",
+    x_axis_label = "Height",
+    tools=""                    # set it to empty to remove the tools
 )
 
-# render line graph
-p.line(x, y, legend="Test", line_width = 2)
+# render graph
+p.hbar(
+    y = tree,
+    right = h,
+    left = 0,
+    height = 0.4,               # height of the bar
+    color="green",
+    fill_alpha = 0.5            # opacity
+)
 
 # show results
 show(p)
