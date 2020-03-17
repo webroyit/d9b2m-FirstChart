@@ -1,4 +1,4 @@
-from bokeh.plotting import figure, output_file, show
+from bokeh.plotting import figure, output_file, show, ColumnDataSource
 import pandas
 
 # plot values
@@ -8,30 +8,34 @@ import pandas
 # read data from csv
 df = pandas.read_csv("trees.csv")
 
-tree = df["Tree"]
-h = df["Height"]
+# create ColumnDataSource from data
+source = ColumnDataSource(df)
 
 # generate the code on this file
 output_file("index.html")
 
+# get the value from source
+tree_list = source.data["Tree"].tolist()
+
 # add plot
 p = figure(
-    y_range = tree,
+    y_range = tree_list,
     plot_width = 800,           # width of the graph
     plot_height = 600,          # height of the graph
     title = "Trees Height",
     x_axis_label = "Height",
-    tools=""                    # set it to empty to remove the tools
+    tools="box_select,zoom_in,zoom_out,reset"                    # set it to empty to remove the tools
 )
 
 # render graph
 p.hbar(
-    y = tree,
-    right = h,
+    y = "Tree",
+    right = "Height",
     left = 0,
     height = 0.4,               # height of the bar
     color="green",
-    fill_alpha = 0.5            # opacity
+    fill_alpha = 0.5,           # opacity
+    source = source
 )
 
 # show results
