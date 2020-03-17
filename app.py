@@ -1,4 +1,4 @@
-from bokeh.plotting import figure, output_file, show, ColumnDataSource
+from bokeh.plotting import figure, output_file, show, save, ColumnDataSource
 import pandas
 
 # plot values
@@ -24,7 +24,7 @@ p = figure(
     plot_height = 600,          # height of the graph
     title = "Trees Height",
     x_axis_label = "Height",
-    tools="box_select,zoom_in,zoom_out,reset"                    # set it to empty to remove the tools
+    tools="box_select,zoom_in,zoom_out,reset"       # set it to empty to remove the tools
 )
 
 # render graph
@@ -39,4 +39,5 @@ p.hbar(
 )
 
 # show results
-show(p)
+save(p)           # save the file
+# show(p)         # save the file and open a new tap
