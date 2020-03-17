@@ -1,4 +1,5 @@
 from bokeh.plotting import figure, output_file, show, save, ColumnDataSource
+from bokeh.models.tools import HoverTool
 import pandas
 
 # plot values
@@ -37,6 +38,18 @@ p.hbar(
     fill_alpha = 0.5,           # opacity
     source = source
 )
+
+# add tooltips
+hover = HoverTool()
+hover.tooltips = """
+    <div>
+        <h3>@Tree</h3>
+        <div><strong>Age: </strong>@Age</div>
+        <div><strong>Height: </strong>@Height</div>
+    <div>
+"""
+
+p.add_tools(hover)
 
 # show results
 save(p)           # save the file
