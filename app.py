@@ -42,8 +42,14 @@ p.hbar(
         factors = tree_list     # colors based tree data
     ),
     fill_alpha = 0.9,           # opacity
-    source = source
+    source = source,
+    legend = "Tree"
 )
+
+# add legend
+p.legend.orientation = "horizontal"           # horizontal or vertical
+p.legend.location = "bottom_right"            # where to display the legend
+p.legend.label_text_font_size = "10px"
 
 # add tooltips
 hover = HoverTool()
