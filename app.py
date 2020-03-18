@@ -2,6 +2,7 @@ from bokeh.plotting import figure, output_file, show, save, ColumnDataSource
 from bokeh.models.tools import HoverTool
 from bokeh.transform import factor_cmap
 from bokeh.palettes import Greens8
+from bokeh.embed import components
 import pandas
 
 # plot values
@@ -67,3 +68,8 @@ p.add_tools(hover)
 # show results
 save(p)           # save the file
 # show(p)         # save the file and open a new tap
+
+# print out the code for the graph
+script, div = components(p)
+print(div)
+print(script)
