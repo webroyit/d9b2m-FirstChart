@@ -1,5 +1,7 @@
 from bokeh.plotting import figure, output_file, show, save, ColumnDataSource
 from bokeh.models.tools import HoverTool
+from bokeh.transform import factor_cmap
+from bokeh.palettes import Greens8
 import pandas
 
 # plot values
@@ -34,8 +36,12 @@ p.hbar(
     right = "Height",
     left = 0,
     height = 0.4,               # height of the bar
-    color="green",
-    fill_alpha = 0.5,           # opacity
+    fill_color = factor_cmap(
+        "Tree",
+        palette = Greens8,      # apply different colors
+        factors = tree_list     # colors based tree data
+    ),
+    fill_alpha = 0.9,           # opacity
     source = source
 )
 
