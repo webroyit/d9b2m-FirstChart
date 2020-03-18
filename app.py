@@ -46,6 +46,7 @@ hover.tooltips = """
         <h3>@Tree</h3>
         <div><strong>Age: </strong>@Age</div>
         <div><strong>Height: </strong>@Height</div>
+        <div><img src = "@Image" alt = "Tree" width = "200" /></div>
     <div>
 """
 
